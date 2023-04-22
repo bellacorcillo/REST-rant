@@ -26,7 +26,9 @@ router.post('/', (req, res) => {
     res.send('POST /places')
   })
 
-  
+  router.get('/:id', (req, res) => {
+    res.render('places/show')
+  })  
   
   
 
