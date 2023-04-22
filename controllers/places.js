@@ -1,7 +1,14 @@
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-    res.render('places/index', { places })
+    db.Place.find()
+        .then((places) => {
+            res.render('places/index', { places })
+        })
+        .catch(err => {
+            console.log(err)
+            res.render('error404')
+        })
 })
 
 let places = [{
@@ -17,5 +24,16 @@ let places = [{
     cuisines: 'Coffee, Bakery',
     pic: 'http://placekitten.com/250/250'
   }]
+
+  router.get('/new', (req, res) => {
+    res.render('places/new')
+  })
+
+  router.post('/', (req, res) => {
+    console.log(req.body)
+    res.send('POST /places')
+  })
+  
+  
 
 module.exports = router

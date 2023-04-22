@@ -7,9 +7,9 @@ function home() {
             <main>
                 <h1>REST-Rant</h1>
                 <div>
-                    <img src="/images/homefood.jpg" alt="Outdoor Picnic" />
+                    <img src="/images/Meal Homepage.jpg" alt="Beautiful Food" />
                     <div>
-                        Photo by <a href="https://unsplash.com/@spencerdavis">Spencer Davis</a> on <a href="https://unsplash.com/photos/vJsj-hgOEG0">Unsplash</a>
+                        Photo by <a href="https://unsplash.com/@marg">Spencer Davis</a> on <a href="https://unsplash.com/photos/YUQEo7ajeLA">Unsplash</a>
                     </div>
                 </div>
                 <a href="/places">
