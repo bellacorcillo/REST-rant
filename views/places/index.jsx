@@ -19,6 +19,7 @@ let placesFormatted = data.places.map((place, index) => {
     </div>
   )
 })
+
   
   return (
     <Def>
