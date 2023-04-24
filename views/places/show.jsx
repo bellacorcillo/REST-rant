@@ -1,28 +1,42 @@
-const React = require('react')
-const Def = require('../default')
+const React = require('react');
+const Def = require('../default');
 
-function show({ place }) {
-    console.log(place)
-    let comments = (
-        <h3 className="inactive">
-            No comments yet!
-        </h3>
-    )
-    let rating = (
-        <h3 className="inactive">
-            Not rated yet!
-        </h3>
-    )
-    <a href="" className="btn btn-warning"> 
-        Edit
-        </a>  
-        <form method="POST" action=""> 
-        <button type="submit" className="btn btn-danger">
+function Show({ place }) {
+  return (
+    <Def>
+      <div className="container">
+        <h1>{place.name}</h1>
+        <p>{place.description}</p>
+
+        {place.comments.length > 0 ? (
+          <ul>
+            {place.comments.map((comment, index) => (
+              <li key={index}>{comment}</li>
+            ))}
+          </ul>
+        ) : (
+          <h3>No comments yet!</h3>
+        )}
+
+        {place.rating ? (
+          <h3>Rating: {place.rating}</h3>
+        ) : (
+          <h3>Not rated yet!</h3>
+        )}
+
+        <a href={`/places/${place.id}/edit`} className="btn btn-warning">
+          Edit
+        </a>
+
+        <form method="POST" action={`/places/${place.id}`}>
+          <button type="submit" className="btn btn-danger">
             Delete
-        </button>
-        </form>     
-
+          </button>
+        </form>
+      </div>
+    </Def>
+  );
 }
 
-module.exports = show
+module.exports = Show
 
