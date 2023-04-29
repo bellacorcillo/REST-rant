@@ -1,13 +1,13 @@
-module.exports  = [{
-    name: 'Best Ramen',
-    city: 'Las Vegas',
-    state: 'NV',
-    cuisines: 'Asian, Japanese',
-    pic: '/images/ramen.jpg'
-  }, {
-    name: 'The Brunch Spot',
-    city: 'Las Vegas',
-    state: 'NV',
-    cuisines: 'Brunch, Coffee',
-    pic: '/images/breakfast.jpg'
-  }]
+const mongoose = require('mongoose')
+
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  pic: String,
+  cuisines: { type: String, required: true },
+  city: { type: String, default: 'Anytown' },
+  state: { type: String, default: 'USA' },
+  founded: Number
+})
+
+module.exports = mongoose.model('Place', placeSchema)
+
