@@ -15,11 +15,11 @@ db.Place.create([{
     pic: '/images/coffee-cat.jpg',
     founded: 2020
 }])
-.then(() => {
-    console.log('Success!')
-    process.exit()
-})
-.catch(err => {
-    console.log('Failure!', err)
-    process.exit()
-})
+    .then(() => {
+        console.log('Success!')
+        process.exit()
+    })
+    .catch(err => {
+        console.log('Failure!', err)
+        process.exit()
+    })
