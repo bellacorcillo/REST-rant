@@ -1,42 +1,41 @@
-const React = require('react');
-const Def = require('../default');
+import React, { Component } from "react";
 
-function Show(data) {
-  return (
-    <Def>
-      <div className="container">
-        <h1>{data.place.name}</h1>
-        <p>{data.place.description}</p>
+class Show extends Component {
+  state = {
+    data: {},
+  };
 
-        {/* {place.comments.length > 0 ? (
-          <ul>
-            {place.comments.map((comment, index) => (
-              <li key={index}>{comment}</li>
-            ))}
-          </ul>
-        ) : (
-          <h3>No comments yet!</h3>
-        )} */}
+  async componentDidMount() {
+    const response = await fetch(`/api/places/${this.props.match.params.id}`);
+    const data = await response.json();
+    this.setState({ data });
+  }
 
-        {data.place.rating ? (
-          <h3>Rating: {data.place.rating}</h3>
-        ) : (
-          <h3>Not rated yet!</h3>
-        )}
+  render() {
+    const { data } = this.state;
 
-        <a href={`/places/${data.id}/edit`} className="btn btn-warning">
-          Edit
-        </a>
-
-        <form method="POST" action={`/places/${data.id}?_method=DELETE`}>
-          <button type="submit" className="btn btn-danger">
-            Delete
-          </button>
-        </form>
-      </div>
-    </Def>
-  );
+    return (
+      <main>
+        <div className="row">
+          <div className="col-sm-12 col-md-6">
+            <img src={data.place.pic} alt={data.place.name} />
+          </div>
+          <div className="col-sm-12 col-md-6">
+            <h2>{data.place.name}</h2>
+            <h3>{data.place.category}</h3>
+            <h4>{data.place.price}</h4>
+            <p>{data.place.description}</p>
+            <h3>
+              Located in {data.place.city}, {data.place.state}
+            </h3>
+            <h3>{data.place.showEstablished()}</h3>
+            <h4>Serving {data.place.cuisines}</h4>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
 
-module.exports = Show
+export default Show
 
