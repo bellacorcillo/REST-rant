@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     if (!req.body.pic) {
-        req.body.pic = './images/tokyo-ramen.jpg'
+        req.body.pic = './images/ramen.jpg'
     }
 
     db.Place.create(req.body)
