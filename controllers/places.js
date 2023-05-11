@@ -69,7 +69,7 @@ router.put('/:id', (req, res) => {
     })
     .catch((err) => {
       console.log(err)
-      res.render("Error")
+      res.render("error404")
     })
 });
 
@@ -80,7 +80,7 @@ router.delete('/:id', (req, res) => {
     })
     .catch((err) => {
       console.log(err)
-    res.render('Error')
+    res.render('error404')
   })
 });
 
@@ -112,7 +112,7 @@ router.delete('/:id/comment/:rantId', (req, res) => {
   })
   .catch((err) =>{
     console.log("PLACE", err)
-    res.render('Error404')
+    res.render('error404')
   })
 });
 
